@@ -19,7 +19,7 @@ try {
     $phone = $_POST['phone'];
     $message = $_POST['message'];
     // Prepare SQL statement to insert data into table
-    $stmt = $conn->prepare("INSERT INTO form_data (fname,lname, email, phone, message) VALUES (:fname, :lname, :email, :phone, :message)");
+    $stmt = $conn->prepare("INSERT INTO form_info (fname,lname, email, phone, message) VALUES (:fname, :lname, :email, :phone, :message)");
 
     // Bind parameters and execute the statement
     $stmt->bindParam(':fname', $fname);
