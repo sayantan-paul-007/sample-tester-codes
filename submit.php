@@ -13,18 +13,20 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Get form data
-    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-
+    $message = $_POST['message'];
     // Prepare SQL statement to insert data into table
-    $stmt = $conn->prepare("INSERT INTO form_data (name, email, phone) VALUES (:name, :email, :phone)");
+    $stmt = $conn->prepare("INSERT INTO form_data (fname,lname, email, phone, message) VALUES (:fname, :lname, :email, :phone, :message)");
 
     // Bind parameters and execute the statement
-    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':fname', $fname);
+    $stmt->bindParam(':lname', $lname);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':phone', $phone);
-
+    $stmt->bindParam(':message', $message);
     $stmt->execute();
 
     echo "New record created successfully";
